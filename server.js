@@ -2,6 +2,7 @@ var fs = require('fs');
 var http = require('http');
 var https = require('https');
 var url = require('url');
+var PORT = process.env.PORT;
 
 var dictionary = null;
 
@@ -93,10 +94,10 @@ downloadDictionary('https://raw.githubusercontent.com/NikitaP045/dictionary-serv
 
 const server = http.createServer(dictionaryHandler);
 
-server.listen(80, (err) => {  
+server.listen(PORT, (err) => {  
   if (err) {
     return console.log('error starting server: ' + err);
   }
 
-  console.log('server is listening on 80');
+  console.log('server is listening on ' + PORT );
 });
