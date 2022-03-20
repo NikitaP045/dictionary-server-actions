@@ -36,6 +36,6 @@ jobs:
           email: "nikita045-98@mail.ru"
           api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: "dictionary-server-actions"
-          dockerfile: "src"
+          dockerfile: "."
           options: '' # Docker Build Options
           formation: '' # Docker Dyno Formation. By default is web
