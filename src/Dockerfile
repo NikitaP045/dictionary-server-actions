@@ -1,4 +1,4 @@
-FROM node:7.5-slim
+FROM node:14-alpine
 
 COPY server.js /server.js
 COPY graph.png /graph.png
