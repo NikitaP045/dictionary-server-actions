@@ -27,9 +27,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build, Push and Deploy to Heroku
+        id: heroku
+        uses: Techmmunity/docker-heroku-deploy@v1.0.0 # use the latest version of the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           email: "nikita045-98@mail.ru"
+          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
           app_name: "dictionary-server-actions"
+          dockerfile_path: "src/Dockerfile" # OPTIONAL: set the path to the folder wher the Dockerfile is located, the default is the rootDir
+          dockerfile_name: "." # OPTIONAL: Custom name to your dockerfile, like Dockerfile.dev
+          options: "" # OPTIONAL: Docker Build Options
+          formation: "web" # OPTIONAL: Docker Dyno Formation. By default is web
