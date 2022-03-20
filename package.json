@@ -1,6 +1,9 @@
 {
     "scripts": {
-    "start": "node src",
-    "test": "editorconfig-checker"
-    }
+        "start": "node src",
+        "test": "editorconfig-checker"
+    },
+    "devDependencies": {
+        "editorconfig-checker": "^3.3.0"
+  }
 }
