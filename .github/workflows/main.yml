@@ -39,4 +39,4 @@ jobs:
           dockerfile_path: "src/Dockerfile" # OPTIONAL: set the path to the folder wher the Dockerfile is located, the default is the rootDir
           dockerfile_name: "." # OPTIONAL: Custom name to your dockerfile, like Dockerfile.dev
           options: "" # OPTIONAL: Docker Build Options
-          formation: "web" # OPTIONAL: Docker Dyno Formation. By default is web
+          formation: "" # OPTIONAL: Docker Dyno Formation. By default is web
