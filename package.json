@@ -1,4 +1,6 @@
-"scripts": {
+{
+    "scripts": {
     "start": "node src",
     "test": "editorconfig-checker"
+    }
 }
