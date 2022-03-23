@@ -19,23 +19,20 @@ var dictionaryHandler = (request, response) => {
         }
         return;
     }
-    
-        if (u.pathname == '/info') {
-        fs.readFile(__dirname + '/graph.png', function (err, content) {
-            if (err) {
-                response.writeHead(400, {'Content-type':'text/html'})
-                console.log(err);
-                response.end("No such image");    
-            } else {
-                //specify the content type in the response will be an image
-                response.writeHead(200,{'Content-type':'image/png'});
-                response.end(content);
-            }
-    });
-
-          return;
-      }
-
+    if (u.pathname == '/info') {
+    fs.readFile(__dirname + '/graph.png', function (err, content) {
+        if (err) {
+            response.writeHead(400, {'Content-type':'text/html'})
+            console.log(err);
+            response.end("No such image");    
+        } else {
+            //specify the content type in the response will be an image
+            response.writeHead(200,{'Content-type':'image/png'});
+            response.end(content);
+        }
+});
+      return;
+  }
     var key = '';
     if (u.pathname.length > 0) {
         //console.log(u);
@@ -50,7 +47,6 @@ var dictionaryHandler = (request, response) => {
     response.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
     response.end(def);
 }
-
 var downloadDictionary = (url, file, callback) => {
   var stream = fs.createWriteStream(file);
   var req = https.get(url, function(res) {
