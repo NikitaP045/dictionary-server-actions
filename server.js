@@ -24,15 +24,15 @@ var dictionaryHandler = (request, response) => {
         if (err) {
             response.writeHead(400, {'Content-type':'text/html'})
             console.log(err);
-            response.end("No such image");    
+            response.end("No such image");
         } else {
             //specify the content type in the response will be an image
             response.writeHead(200,{'Content-type':'image/png'});
             response.end(content);
         }
 });
-      return;
-  }
+    return;
+    }
     var key = '';
     if (u.pathname.length > 0) {
         //console.log(u);
@@ -48,17 +48,17 @@ var dictionaryHandler = (request, response) => {
     response.end(def);
 }
 var downloadDictionary = (url, file, callback) => {
-  var stream = fs.createWriteStream(file);
-  var req = https.get(url, function(res) {
+    var stream = fs.createWriteStream(file);
+    var req = https.get(url, function(res) {
     res.pipe(stream);
     stream.on('finish', function() {
-      stream.close(callback);
-      console.log('dictionary downloaded');
+        stream.close(callback);
+        console.log('dictionary downloaded');
     });
-  }).on('error', function(err) {
+    }).on('error', function(err) {
     fs.unlink(file);
     if (callback) cb(err.message);
-  });
+    });
 };
 
 var loadDictionary = (file, callback) => {
@@ -90,10 +90,10 @@ downloadDictionary('https://raw.githubusercontent.com/NikitaP045/dictionary-serv
 
 const server = http.createServer(dictionaryHandler);
 
-server.listen(PORT, (err) => {  
-  if (err) {
+server.listen(PORT, (err) => {
+    if (err) {
     return console.log('error starting server: ' + err);
-  }
+    }
 
-  console.log('server is listening on ' + PORT );
+    console.log('server is listening on ' + PORT );
 });
